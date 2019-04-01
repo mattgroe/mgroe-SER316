@@ -52,9 +52,9 @@ public class Course {
         int min = Integer.MAX_VALUE;
         int max = Integer.MIN_VALUE;
         
-        if(collection.size() == 1) 
+        if(collection.size() == 1) {
             return collection.get(0);
-        else if (collection.size() == 2 ) {
+        } else if (collection.size() == 2 ) {
             return (double)(collection.get(0) + collection.get(1))/2;
         } else {
             int allPoints = 0;
@@ -73,8 +73,8 @@ public class Course {
             }
             
             int totalPoints = allPoints-max-min;
-            	return totalPoints/(double)(counter-1); 
             
+            return totalPoints/(double)(counter-1); 
 
         }
     }
