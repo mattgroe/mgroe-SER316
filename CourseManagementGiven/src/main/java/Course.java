@@ -116,7 +116,12 @@ public class Course {
     }
     
     public HashMap<String, Integer> countOccurencesLetterGrades() throws NullPointerException{
-    	return null;
+    	if (points.size() < 1) {
+    		return null;
+    	} else {
+    		//not yet implemented
+    		return points;
+    	}
     }
   
  
