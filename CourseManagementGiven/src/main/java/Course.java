@@ -16,7 +16,7 @@ public class Course {
     
     public HashMap<String, Integer> points = new HashMap<>(); // maps student names (asurite) to their points
     private String name; // course name
-
+    ArrayList<Student> students  = new ArrayList<Student>();
 
     public Course(String name){
         this.setName(name);
@@ -35,7 +35,7 @@ public class Course {
        ArrayList<Integer> values = new ArrayList<Integer>(points.values());
 
        System.out.print("Average Grades without max and without min: ");
-       System.out.println(this.calculateAverageWithoutMinWithoutMax());
+       System.out.println(this.calculateAverageWithoutMinWithoutMax(values));
     }
     
     
@@ -45,8 +45,8 @@ public class Course {
     // negative points should be ignored
     // max value and min value should be removed - (if doubles then only the first occurrence)
     // if just one or two values no values will be omitted
-    public double calculateAverageWithoutMinWithoutMax() throws NullPointerException {
-        ArrayList<Integer> collection = new ArrayList<Integer>(points.values());
+    public double calculateAverageWithoutMinWithoutMax(ArrayList<Integer> values) throws NullPointerException {
+        ArrayList<Integer> collection = new ArrayList<Integer>(values);
         
         int counter = 0;
         int min = Integer.MAX_VALUE;
@@ -90,7 +90,6 @@ public class Course {
     
     // REACH at least 95% Code coverage  (assign 3)
     // Students should only be added when they are not yet in the course (names (asurite member) needs to be unique)
-    ArrayList<Student> students  = new ArrayList<Student>();
     public boolean addStudent(Student s) {
         students.add(s);
         points.put(s.getAsurite(), -1);
@@ -117,8 +116,7 @@ public class Course {
     }
     
     public HashMap<String, Integer> countOccurencesLetterGrades() throws NullPointerException{
-     	return null;
-   
+    	return null;
     }
   
  
