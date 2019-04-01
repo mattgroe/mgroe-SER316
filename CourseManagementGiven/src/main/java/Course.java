@@ -5,9 +5,9 @@ package main.java;
  */
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
+//import java.util.Arrays;
+//import java.util.Collection;
+//import java.util.Collections;
 import java.util.HashMap;
 
 
@@ -15,27 +15,27 @@ import java.util.HashMap;
 public class Course {
     
     public HashMap<String, Integer> points = new HashMap<>(); // maps student names (asurite) to their points
-    private String Name; // course name
+    private String name; // course name
 
 
     public Course(String name){
-        this.SetName(name);
+        this.setName(name);
     }
 
-    public String GetName() {
-        return Name;
+    public String getName() {
+        return name;
     }
 
-    public void SetName(String name) {
-        this.Name = name;
+    public void setName(String name) {
+        this.name = name;
     }
     
 
     public void printCourseStats() {
        ArrayList<Integer> values = new ArrayList<Integer>(points.values());
 
-        System.out.print("Average Grades without max and without min: ");
-        System.out.println(this.calculateAverageWithoutMinWithoutMax());
+       System.out.print("Average Grades without max and without min: ");
+       System.out.println(this.calculateAverageWithoutMinWithoutMax());
     }
     
     
@@ -48,16 +48,15 @@ public class Course {
     public double calculateAverageWithoutMinWithoutMax() throws NullPointerException {
         ArrayList<Integer> collection = new ArrayList<Integer>(points.values());
         
-         int counter = 0;
-         int min = Integer.MAX_VALUE;
-         int max = Integer.MIN_VALUE;
-         if(collection.size() == 1)
-            return collection.get(0);
+        int counter = 0;
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
         
-        else if(collection.size() == 2 ){
+        if(collection.size() == 1) 
+            return collection.get(0);
+        else if (collection.size() == 2 ) {
             return (double)(collection.get(0) + collection.get(1))/2;
-        }
-        else {
+        } else {
             int allPoints = 0;
             for(int point: collection){
                 if (point >= 0) {
@@ -74,7 +73,8 @@ public class Course {
             }
             
             int totalPoints = allPoints-max-min;
-                return totalPoints/(double)(counter-1); 
+            	return totalPoints/(double)(counter-1); 
+            
 
         }
     }
@@ -98,7 +98,7 @@ public class Course {
     }
 
 
-    public HashMap<String, Integer> GetPoints(){
+    public HashMap<String, Integer> getPoints(){
         return points;
     }
     
