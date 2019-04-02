@@ -60,8 +60,8 @@ public class Course {
             int allPoints = 0;
             for(int point: collection){
                 if (point >= 0) {
-                    
-                    counter = counter++;
+                	
+                    counter += 1;
                     if (point < min){
                         min = point;
                     }
@@ -73,8 +73,9 @@ public class Course {
             }
             
             int totalPoints = allPoints-max-min;
-            
-            return totalPoints/(double)(counter-1); 
+            //SER316-start
+            return totalPoints/(double)(counter-2);
+            //SER316-end
 
         }
     }
@@ -91,9 +92,20 @@ public class Course {
     // REACH at least 95% Code coverage  (assign 3)
     // Students should only be added when they are not yet in the course (names (asurite member) needs to be unique)
     public boolean addStudent(Student s) {
-        students.add(s);
-        points.put(s.getAsurite(), -1);
-        return true;
+    	//SER316-start
+    	Boolean found = false;
+    	for (int i = 0; i < students.size(); i++) {
+    		if (students.get(i).getAsurite() == s.getAsurite()) {
+    			found = true;
+    			return false;
+    		}
+    	}
+    	if (found != true) {
+    		students.add(s);
+    		points.put(s.getAsurite(), -1);    		
+    	}
+    	//SER316-end
+		return true;
     }
 
 
