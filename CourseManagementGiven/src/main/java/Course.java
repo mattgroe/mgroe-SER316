@@ -35,7 +35,7 @@ public class Course {
        ArrayList<Integer> values = new ArrayList<Integer>(points.values());
 
        System.out.print("Average Grades without max and without min: ");
-       System.out.println(this.calculateAverageWithoutMinWithoutMax(values));
+       System.out.println(this.calculateAverageWithoutMinWithoutMax());
     }
     
     
@@ -45,8 +45,8 @@ public class Course {
     // negative points should be ignored
     // max value and min value should be removed - (if doubles then only the first occurrence)
     // if just one or two values no values will be omitted
-    public double calculateAverageWithoutMinWithoutMax(ArrayList<Integer> values) throws NullPointerException {
-        ArrayList<Integer> collection = new ArrayList<Integer>(values);
+    public double calculateAverageWithoutMinWithoutMax() throws NullPointerException {
+        ArrayList<Integer> collection = new ArrayList<Integer>(points.values());
         
         int counter = 0;
         int min = Integer.MAX_VALUE;
