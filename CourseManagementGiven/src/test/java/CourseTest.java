@@ -10,13 +10,6 @@ import main.java.Course;
 import main.java.Major;
 import main.java.Student;
 
-/*
- * File:
- * Author:
- * Date:
- * Description:
-*/
-
 
 /*
  * Class:
