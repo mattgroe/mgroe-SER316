@@ -2,6 +2,7 @@
 
 # Package Files #
 # *.jar
+.tmp
 
 ### Gradle ###
 .gradle
