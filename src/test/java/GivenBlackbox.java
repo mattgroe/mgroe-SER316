@@ -30,13 +30,13 @@ import java.lang.reflect.Constructor;
 @RunWith(Parameterized.class)
 public class GivenBlackbox {
     private Class<Course> classUnderTest;
-    
-    
+
+
     @SuppressWarnings("unchecked")
     public GivenBlackbox(Object classUnderTest) {
         this.classUnderTest = (Class<Course>) classUnderTest;
     }
-    
+
     // Defining all the classes that need to be tested
     @Parameters
     public static Collection<Object[]> courseGradesUnderTest() {
@@ -50,13 +50,13 @@ public class GivenBlackbox {
         };
         return Arrays.asList(classes);
     }
-    
+
     // method to call the correct constructor
     private Course createCourse(String name) throws Exception {
         Constructor<Course> constructor = classUnderTest.getConstructor(String.class);
         return constructor.newInstance(name);
     }
-    
+
     /*
      * Name: Grade Tests
      * Method: countOccurencesLetterGrades()
@@ -64,14 +64,14 @@ public class GivenBlackbox {
     // A sample course
     Course twoStudent;
     HashMap<String, Integer> twoStudentExpected = new HashMap<String, Integer>(); 
-    
-    
+
+
     @Before
     public void setUp() throws Exception {
-        
+
         // all courses should be created like this
-        
-        
+
+
         // Course created with two Students having
         twoStudent = createCourse("SER316");
         twoStudent.set_points("Hanna",100);
@@ -83,7 +83,7 @@ public class GivenBlackbox {
         twoStudentExpected.put("D", 0);
         twoStudentExpected.put("F", 0);
     }
-    
+
     // Sample test
     @Test
     public void twoStudent() {
@@ -100,21 +100,21 @@ public class GivenBlackbox {
     Course oneStudentFup;
     Course oneStudentFmid;
     HashMap<String, Integer> oneStudentFExpected = new HashMap<String, Integer>(); 
-    
-    
+
+
     @Before
     public void setUp1() throws Exception {
-        
+
         // all courses should be created like this
-        
-        
+
+
         // Course created with one Student having (lower boundary)
         oneStudentFlow = createCourse("SER316");
         oneStudentFlow.set_points("Ralph", 0);
         // Course created with one Student having (upper boundary)
         oneStudentFup = createCourse("SER316");
         oneStudentFup.set_points("Johnny", 35);
-     // Course created with one Student having (between boundary)
+        // Course created with one Student having (between boundary)
         oneStudentFmid = createCourse("SER316");
         oneStudentFmid.set_points("Alex", 28);
         // this would be the expected result after the method countOccurencesLetterGrades is called
@@ -124,12 +124,12 @@ public class GivenBlackbox {
         oneStudentFExpected.put("D", 0);
         oneStudentFExpected.put("F", 1);
     }
-    
+
     // Sample test
 
     @Test
     public void oneFLow() {
-    	// Lower boundary Assert
+        // Lower boundary Assert
         HashMap<String, Integer> ansLow = oneStudentFlow.countOccurencesLetterGrades();
         System.out.println(ansLow);
         assertTrue("more or less than one Student has an F", ansLow.equals(oneStudentFExpected));
@@ -137,10 +137,10 @@ public class GivenBlackbox {
         //Fails 0,3,4,5
         //Errors 1
     }
-    
+
     @Test
     public void oneFUp() {
-    	// Upper boundary Assert
+        // Upper boundary Assert
         HashMap<String, Integer> ansUp = oneStudentFup.countOccurencesLetterGrades();
         System.out.println(ansUp);
         assertTrue("more or less than one Student has an F", ansUp.equals(oneStudentFExpected));
@@ -148,10 +148,10 @@ public class GivenBlackbox {
         //Fails 0,1,3,4,5
         //No error
     }
-    
+
     @Test
     public void oneFMid() {
-    	// Middle boundary Assert
+        // Middle boundary Assert
         HashMap<String, Integer> ansMid = oneStudentFmid.countOccurencesLetterGrades();
         System.out.println(ansMid);
         assertTrue("more or less than one Student has an F", ansMid.equals(oneStudentFExpected));
@@ -159,8 +159,8 @@ public class GivenBlackbox {
         //Fails 0,1,3,4,5
         //No error
     }   
-    
-    
+
+
     /*
      * Name: Grade D Tests
      * Method: countOccurencesLetterGrades()
@@ -170,11 +170,11 @@ public class GivenBlackbox {
     Course oneStudentDup;
     Course oneStudentDmid;
     HashMap<String, Integer> oneStudentDExpected = new HashMap<String, Integer>(); 
-    
-    
+
+
     @Before
     public void setUp2() throws Exception {
-        
+
         // all courses should be created like this
 
         // Course created with one Student having (lower boundary)
@@ -183,7 +183,7 @@ public class GivenBlackbox {
         // Course created with one Student having (upper boundary)
         oneStudentDup = createCourse("SER316");
         oneStudentDup.set_points("Johnny", 50);
-     // Course created with one Student having (between boundary)
+        // Course created with one Student having (between boundary)
         oneStudentDmid = createCourse("SER316");
         oneStudentDmid.set_points("Alex", 40);
         // this would be the expected result after the method countOccurencesLetterGrades is called
@@ -193,11 +193,11 @@ public class GivenBlackbox {
         oneStudentDExpected.put("D", 1);
         oneStudentDExpected.put("F", 0);
     }
-    
+
     // Sample test
     @Test
     public void oneDLow() {
-    	// Lower boundary Assert
+        // Lower boundary Assert
         HashMap<String, Integer> ansLow = oneStudentDlow.countOccurencesLetterGrades();
         //System.out.println(ansLow);
         assertTrue("more or less than one Student has an D", ansLow.equals(oneStudentDExpected));
@@ -205,52 +205,52 @@ public class GivenBlackbox {
         //Fails 2,3,4,5
         //Errors 1
     }
-    
+
     @Test
     public void oneDUp() {
-    	// Upper boundary Assert
+        // Upper boundary Assert
         HashMap<String, Integer> ansUp = oneStudentDup.countOccurencesLetterGrades();
         //System.out.println(ansUp);
         assertTrue("more or less than one Student has an D", ansUp.equals(oneStudentDExpected));
         //Fails 0,1,2,3,4,5
         //No errors
     }
-    
+
     @Test
     public void oneDMid() {
-    	// Middle boundary Assert
+        // Middle boundary Assert
         HashMap<String, Integer> ansMid = oneStudentDmid.countOccurencesLetterGrades();
         //System.out.println(ansUp);
         assertTrue("more or less than one Student has an D", ansMid.equals(oneStudentDExpected));
         //Fails 0,1,2,3,4,5
         //No errors
     }
-//    
-//    
-//    /*
-//     * Name: Grade C Tests
-//     * Method: countOccurencesLetterGrades()
-//     */
-//    // A sample course
+    //    
+    //    
+    //    /*
+    //     * Name: Grade C Tests
+    //     * Method: countOccurencesLetterGrades()
+    //     */
+    //    // A sample course
     Course oneStudentClow;
     Course oneStudentCup;
     Course oneStudentCmid;
     HashMap<String, Integer> oneStudentCExpected = new HashMap<String, Integer>(); 
-    
-    
+
+
     @Before
     public void setUp3() throws Exception {
-        
+
         // all courses should be created like this
-        
-        
+
+
         // Course created with one Student having (lower boundary)
         oneStudentClow = createCourse("SER316");
         oneStudentClow.set_points("Ralph", 51);
         // Course created with one Student having (upper boundary)
         oneStudentCup = createCourse("SER316");
         oneStudentCup.set_points("Johnny", 65);
-     // Course created with one Student having (between boundary)
+        // Course created with one Student having (between boundary)
         oneStudentCmid = createCourse("SER316");
         oneStudentCmid.set_points("Alex", 58);
         // this would be the expected result after the method countOccurencesLetterGrades is called
@@ -260,11 +260,11 @@ public class GivenBlackbox {
         oneStudentCExpected.put("D", 0);
         oneStudentCExpected.put("F", 0);
     }
-    
+
     // Sample test
     @Test
     public void oneCLow() {
-    	// Lower boundary Assert
+        // Lower boundary Assert
         HashMap<String, Integer> ansLow = oneStudentClow.countOccurencesLetterGrades();
         System.out.println("ansLow C: " + ansLow);
         assertTrue("more or less than one Student has an C", ansLow.equals(oneStudentCExpected));
@@ -272,28 +272,28 @@ public class GivenBlackbox {
         //Fails 0,1,2,3,4,5
         //No errors
     }
-    
+
     @Test
     public void oneCUp() {
-    	// Upper boundary Assert
+        // Upper boundary Assert
         HashMap<String, Integer> ansUp = oneStudentCup.countOccurencesLetterGrades();
         System.out.println("ansUp C: " + ansUp);
         assertTrue("more or less than one Student has an C", ansUp.equals(oneStudentCExpected));
         //Fails 0,1,2,3,4,5
         //No errors
     }
-    
+
     @Test
     public void oneCMid() {
-    	// Middle boundary Assert
+        // Middle boundary Assert
         HashMap<String, Integer> ansMid = oneStudentCmid.countOccurencesLetterGrades();
         System.out.println("andMid C: " + ansMid);
         assertTrue("more or less than one Student has an C", ansMid.equals(oneStudentCExpected));
         //Fails 0,1,2,3,4,5
         //No errors
     }
-    
-    
+
+
     /*
      * Name: Grade B Tests
      * Method: countOccurencesLetterGrades()
@@ -303,11 +303,11 @@ public class GivenBlackbox {
     Course oneStudentBup;
     Course oneStudentBmid;
     HashMap<String, Integer> oneStudentBExpected = new HashMap<String, Integer>(); 
-    
-    
+
+
     @Before
     public void setUp4() throws Exception {
-        
+
         // all courses should be created like this
         // Course created with one Student having (lower boundary)
         oneStudentBlow = createCourse("SER316");
@@ -315,7 +315,7 @@ public class GivenBlackbox {
         // Course created with one Student having (upper boundary)
         oneStudentBup = createCourse("SER316");
         oneStudentBup.set_points("Johnny", 80);
-     // Course created with one Student having (between boundary)
+        // Course created with one Student having (between boundary)
         oneStudentBmid = createCourse("SER316");
         oneStudentBmid.set_points("Alex", 73);
         // this would be the expected result after the method countOccurencesLetterGrades is called
@@ -325,11 +325,11 @@ public class GivenBlackbox {
         oneStudentBExpected.put("D", 0);
         oneStudentBExpected.put("F", 0);
     }
-    
+
     // Sample test\
     @Test
     public void oneBLow() {
-    	// Lower boundary Assert
+        // Lower boundary Assert
         HashMap<String, Integer> ansLow = oneStudentBlow.countOccurencesLetterGrades();
         System.out.println(ansLow);
         assertTrue("more or less than one Student has an B", ansLow.equals(oneStudentBExpected));
@@ -337,28 +337,28 @@ public class GivenBlackbox {
         //Fails 2,3,4,5
         //Errors 1
     }
-    
+
     @Test
     public void oneBUp() {
-    	// Upper boundary Assert
+        // Upper boundary Assert
         HashMap<String, Integer> ansUp = oneStudentBup.countOccurencesLetterGrades();
         System.out.println(ansUp);
         assertTrue("more or less than one Student has an B", ansUp.equals(oneStudentBExpected));
         //Fails 0,1,2,3,4,5
         //No errors
     }
-    
+
     @Test
     public void oneBMid() {
-    	// Middle boundary Assert
+        // Middle boundary Assert
         HashMap<String, Integer> ansMid = oneStudentBmid.countOccurencesLetterGrades();
         System.out.println(ansMid);
         assertTrue("more or less than one Student has an B", ansMid.equals(oneStudentBExpected));
         //Fails 0,1,2,3,4,5
         //No errors
     }
-    
-    
+
+
     /*
      * Name: No Student Test
      * Method: countOccurencesLetterGrades()
@@ -366,10 +366,10 @@ public class GivenBlackbox {
     // A sample course
     Course noStudents;
     HashMap<String, Integer> noStudentsExpected = new HashMap<String, Integer>(); 
-    
+
     @Before
     public void setUp5() throws Exception {
-        
+
         // all courses should be created like this
         // Course created with no students
         noStudents = createCourse("SER316");
@@ -383,12 +383,12 @@ public class GivenBlackbox {
     // Sample test\
     @Test(expected=NullPointerException.class)
     public void noStudent() {
-    	HashMap<String, Integer> ansNo = noStudents.countOccurencesLetterGrades();
+        HashMap<String, Integer> ansNo = noStudents.countOccurencesLetterGrades();
         //Success 0,2,3,4,5
         //Fails 1
         //No errors
     }
-    
+
 }   
 //    
 //    
