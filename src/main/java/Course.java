@@ -46,8 +46,7 @@ public class Course {
     // max value and min value should be removed - (if doubles then only the first occurrence)
     // if just one or two values no values will be omitted
     public double calculateAverageWithoutMinWithoutMax() throws NullPointerException {
-        Collection<Integer> pval = points.values();
-        ArrayList<Integer> collection = new ArrayList<Integer>(pval);
+        ArrayList<Integer> collection = new ArrayList<Integer>(points.values());
 
         int counter = 0;
         int min = Integer.MAX_VALUE;
@@ -96,8 +95,7 @@ public class Course {
     	//SER316-start
     	Boolean found = false;
     	for (int i = 0; i < students.size(); i++) {
-    		if (students.get(i).getAsurite() == s.getAsurite()) {
-    			found = true;
+    		if (students.get(i).getAsurite().equals(s.getAsurite())) {
     			return false;
     		}
     	}
