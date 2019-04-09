@@ -11,8 +11,8 @@ public class Student {
     private Major major;
     private double overall_grade;
     private ArrayList<Course> courses = new ArrayList<Course>();
-    private ArrayList<Course> Courses2 = null;
-    
+    //private ArrayList<Course> Courses2 = null;
+
     public Student(String asurite, Major major){
         this.setAsurite(asurite);
         this.setMajor(major);
@@ -21,7 +21,7 @@ public class Student {
     }
 
     public String getAsurite() {
-         return asurite;
+        return asurite;
     }
 
     public void setAsurite(String asurite ) {
@@ -31,11 +31,11 @@ public class Student {
     public Major getMajor() {
         return major;
     }
-    
+
     public boolean Register_forCourse(Course course) {
-      course.addStudent(this);
-      return courses.add(course);
-  }
+        course.addStudent(this);
+        return courses.add(course);
+    }
 
     public void setMajor(Major major) {
         this.major = major;
@@ -48,8 +48,8 @@ public class Student {
     public void setOverall_grade(double overall_grade) {
         this.overall_grade = overall_grade;
     }
-    
-    
+
+
 
 
 }
