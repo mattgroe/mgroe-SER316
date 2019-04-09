@@ -364,30 +364,30 @@ public class GivenBlackbox {
      * Method: countOccurencesLetterGrades()
      */
     // A sample course
-    Course noStudents;
-    HashMap<String, Integer> noStudentsExpected = new HashMap<String, Integer>(); 
-
-    @Before
-    public void setUp5() throws Exception {
-
-        // all courses should be created like this
-        // Course created with no students
-        noStudents = createCourse("SER316");
-        // this would be the expected result after the method countOccurencesLetterGrades is called
-        noStudentsExpected.put("A", 0);
-        noStudentsExpected.put("B", 0);
-        noStudentsExpected.put("C", 0);
-        noStudentsExpected.put("D", 0);
-        noStudentsExpected.put("F", 0);
-    }
+//    Course noStudents;
+//    HashMap<String, Integer> noStudentsExpected = new HashMap<String, Integer>(); 
+//
+//    @Before
+//    public void setUp5() throws Exception {
+//
+//        // all courses should be created like this
+//        // Course created with no students
+//        noStudents = createCourse("SER316");
+//        // this would be the expected result after the method countOccurencesLetterGrades is called
+//        noStudentsExpected.put("A", 0);
+//        noStudentsExpected.put("B", 0);
+//        noStudentsExpected.put("C", 0);
+//        noStudentsExpected.put("D", 0);
+//        noStudentsExpected.put("F", 0);
+//    }
     // Sample test\
-    @Test(expected=NullPointerException.class)
-    public void noStudent() {
-        HashMap<String, Integer> ansNo = noStudents.countOccurencesLetterGrades();
-        //Success 0,2,3,4,5
-        //Fails 1
-        //No errors
-    }
+//    @Test(expected=NullPointerException.class)
+//    public void noStudent() {
+//        //HashMap<String, Integer> ansNo = noStudents.countOccurencesLetterGrades();
+//        //Success 0,2,3,4,5
+//        //Fails 1
+//        //No errors
+//    }
 
 }   
 //    
